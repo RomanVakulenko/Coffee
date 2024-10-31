@@ -120,7 +120,7 @@ final class RegistrationViewController: UIViewController, RegistrationViewable {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.setUsernameIfRegisteredEarlier()
+        presenter.setUsernameIfRegisteredAndAuthentificatedEarlier()
         showRegisterOrLoginForm()
         navigationController?.navigationBar.tintColor = Colors.labelcolor
         navigationController?.navigationBar.backgroundColor = Colors.navBackColor

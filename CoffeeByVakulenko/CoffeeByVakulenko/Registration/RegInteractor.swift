@@ -59,6 +59,10 @@ extension RegistrationInteractor: RegistrationInteractorCredentialsHandler {
     func storePassword(password: String?) {
         keychain.password = password
     }
+
+    func isAuthenticated() -> Bool {
+        return keychain.token != nil  // Проверяем наличие токена в Keychain
+    }
 }
 
 // MARK: - RegistrationInteractorServiceRequester
@@ -67,7 +71,10 @@ extension RegistrationInteractor: RegistrationInteractorServiceRequester {
     func register(username: String, password: String) {
         guard let hashedPasssword = Crypto.hash(message: password) else {
             fatalError("Unable to hash password")
-        }
+        } //для дополнительной безопасности (обычно сервер сам хэширует пароль)
+
+        let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+        URLCache.shared = cache//то, что отправит нам сервер обычно сохраняется в кеше и к ним можно получить доступ (небезопасно), потому "отключаем"
 
         let parameters: [String: Any] = [
             "login":   username,

@@ -42,7 +42,7 @@ protocol RegistrationPresentable: AnyObject {
 }
 
 protocol RegistrationPresenterViewConfiguration: AnyObject {
-    func setUsernameIfRegisteredEarlier()
+    func setUsernameIfRegisteredAndAuthentificatedEarlier()
 }
 
 protocol RegistrationPresenterServiceInteractable: AnyObject {
@@ -75,6 +75,7 @@ protocol RegistrationInteractorCredentialsHandler: AnyObject {
     var usernameFromStorage: String? { get }
 
     func storePassword(password: String?)
+    func isAuthenticated() -> Bool
 }
 
 

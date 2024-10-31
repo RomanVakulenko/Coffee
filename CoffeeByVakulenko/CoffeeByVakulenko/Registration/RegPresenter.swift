@@ -31,8 +31,9 @@ final class RegistrationPresenter: RegistrationPresentable {
 // MARK: - View Configuration
 extension RegistrationPresenter: RegistrationPresenterViewConfiguration {
 
-    func setUsernameIfRegisteredEarlier() {
-        if interactor.doRememberUsername {
+    func setUsernameIfRegisteredAndAuthentificatedEarlier() {
+        //можно просто по токену
+        if interactor.doRememberUsername && interactor.isAuthenticated() {
             view?.presetUsername(interactor.usernameFromStorage)
         }
     }
