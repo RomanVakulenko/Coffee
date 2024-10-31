@@ -1,6 +1,8 @@
-## Coffee
+## Coffee 
 
 **Needs to do pod install** 
+Project was made at 02.2024, just couple fixes at 10.2024
+TODO: UI should be more reused than it is (can reuse button, cell)
 
 **Stack** 
 - VIPER, dependencies injection with CocoaPods,
